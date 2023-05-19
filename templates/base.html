@@ -38,12 +38,23 @@ li a.active {
  <ul>
 
   <li><a class="active" href={% url 'index' %}>Home</a></li>
+
+  {% if user.is_authenticated %}
+   Welcome {{request.user}}
+  <li><a class="active" href={% url 'handlelogout' %}>Log Out</a></li>
+  
+
+  {% else %}
   <li><a class="active" href={% url 'handleSignup' %}>Sign up</a></li>
   <li><a class="active" href={% url 'handlelogin' %}>Login</a></li>
+  <li><a class="active" href={% url 'showusers' %}>Showusers</a></li> 
 
-  <li><a class="active" herf={% url 'handlelogin' %}>Login</a></li> 
+  {% endif %}
+
+ 
 
 </ul> 
+
 
 {% block add %}{% endblock add %}
 

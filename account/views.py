@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from account.models import User
 from django.contrib import messages
+from django.contrib.auth import authenticate ,login,logout
 
 # Create your views here.
 
@@ -15,8 +17,8 @@ def handleSignup(request):
         pass1=request.POST['pass1']
         pass2=request.POST['pass2']
 
-        print("//////////////////////////////////////////////////////")
-        print(fname,lname,mobile,email,pass1,pass2)
+        # print("//////////////////////////////////////////////////////")
+        # print(fname,lname,mobile,email,pass1,pass2)
 
     
 
@@ -42,6 +44,39 @@ def index(request):
 
 
 def handlelogin(request):
+
+    if request.method == 'POST':
+        loginemail = request.POST['loginemail']
+        loginpass = request.POST['loginpass']
+
+        user = authenticate(email=loginemail, password=loginpass)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Login successful")
+            return redirect('index')
+        else:
+            messages.error(request, "Invalid Details")
+            return redirect('index')
+
     return render(request ,'login.html')
+    # return HttpResponse("404 Error")
 
 # Create your views here.
+
+
+def showusers(request):
+    user = User.objects.all()
+
+    print("ssssssssssssssssssssssssssssssssssssssssssssssssssssssss") 
+    for u in user:
+        print(u.username)
+        print(u.first_name )
+    
+    return render(request, 'showuser.html', {'user':user})
+
+
+def handlelogout(request):
+    logout(request)
+    messages.success(request, 'Logout successfully')
+    return redirect('index')

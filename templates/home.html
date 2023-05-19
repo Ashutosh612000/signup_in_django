@@ -9,8 +9,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<body>
+<body> 
   <h1>Welcome to my website</h1>
+
+  <div>
+    {% for msg in messages %}
+    <div class="alert {{msg.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong>
+        <strong> {{msg.tags}}</strong>        
+    </div>
+    {% endfor %}
+    
+</div>
 </body>
 </html>
 

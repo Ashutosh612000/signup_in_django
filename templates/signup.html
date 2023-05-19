@@ -26,12 +26,7 @@
         </div>
         {% endfor %} {% endcomment %}
 
-       {% for msg in messages %}
-        <div class="alert {{msg.tags}} alert-dismissible fade show" role="alert">
-            <strong>{{msg}}</strong>
-            <strong> {{msg.tags}}</strong>        
-        </div>
-        {% endfor %}
+     
     
 
 <div>
@@ -41,22 +36,22 @@
             {% comment %} UserName : <input type="text"  id='username'  name='username' required>
             <br>
             <br> {% endcomment %}
-            Fname: <input type="text" id='fname' name='fname' required>
+            Fname: <input type="text" id='fname' name='fname' placeholder="Enter Your Frist Name" required>
             <br>
             <br>
-            Lname : <input type="text" id='lname'   name="lname" required>
+            Lname : <input type="text" id='lname'   name="lname" placeholder="Enter Your Last Name" required>
             <br>
             <br>
-            Mobile: <input type="text" id='mobile'   name="mobile" required>
+            Mobile: <input type="text" id='mobile'   name="mobile" placeholder="Enter Mobile Number" required>
             <br>
             <br>
-            Email: <input type="email" id='email'  name="email" required>
+            Email: <input type="email" id='email'  name="email" placeholder="Enter Your Email" required>
             <br>
             <br>
-            Password : <input type="password" id='pass1'  name='pass1' required>
+            Password : <input type="password" id='pass1'  name='pass1' placeholder="Enter Your Password" required>
             <br>
             <br>
-            Re-Password : <input type="password" id='pass2'  name='pass2' required>
+            Re-Password : <input type="password" id='pass2'  name='pass2' placeholder="Re-Enter Your Password" required>
             <br>
             <br>
             <input type="submit" value="submit">
